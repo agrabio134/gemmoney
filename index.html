@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <meta name="description" content="$GEMONEY - The Ultimate Meme Coin Gem on Solana">
+    <title>$GEMONEY - The Ultimate Meme Coin Gem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --blue: #00BFFF;
+            --black: #000000;
+            --dark-bg: #0A0A0A;
+            --shadow: rgba(0, 191, 255, 0.3);
+            --gradient: linear-gradient(135deg, var(--blue), var(--gold));
+            --transition-time: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: #FFFFFF;
+            overflow-x: hidden;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 191, 255, 0.1), transparent);
+            z-index: -1;
+            animation: bg-pulse 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes bg-pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+            z-index: 2;
+        }
+
+        .hero-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: -2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 40px 20px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-logo {
+            width: 150px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3em, 10vw, 5em);
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 15px var(--blue);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.5em, 5vw, 2em);
+            font-weight: 500;
+            color: var(--blue);
+            margin-bottom: 40px;
+            text-shadow: 0 0 5px var(--shadow);
+        }
+
+        .hero-socials {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero-socials a {
+            color: var(--blue);
+            font-size: 2em;
+            transition: color var(--transition-time), transform var(--transition-time);
+        }
+
+        .hero-socials a:hover,
+        .hero-socials a:focus {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .hero-ca {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 30px;
+            background: var(--gradient);
+            border-radius: 50px;
+            font-size: 1.1em;
+            color: var(--black);
+            font-weight: 700;
+            margin-top: 20px;
+            transition: transform var(--transition-time), box-shadow var(--transition-time);
+            box-shadow: 0 0 15px var(--shadow);
+            word-break: break-all;
+        }
+
+        .hero-ca:hover,
+        .hero-ca:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--gold);
+        }
+
+        #hero-copy-message {
+            display: none;
+            color: var(--gold);
+            margin-top: 10px;
+            font-size: 1em;
+            text-shadow: 0 0 5px var(--blue);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: var(--black);
+            padding: 15px 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform var(--transition-time), box-shadow var(--transition-time);
+            box-shadow: 0 0 20px var(--shadow);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--gold);
+        }
+
+        main {
+            background: var(--black);
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            background: var(--black);
+        }
+
+        h2 {
+            font-size: clamp(2.5em, 7vw, 3.5em);
+            font-weight: 900;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 60px;
+            text-shadow: 0 0 10px var(--blue);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .narrative {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .narrative p {
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.5));
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: cardAppear 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .feature-card:hover,
+        .feature-card:focus-within {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--gold);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            color: var(--blue);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--shadow);
+        }
+
+        .feature-card h3 {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        #contract {
+            text-align: center;
+            background: var(--black);
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 0 30px var(--shadow);
+            max-width: 100%;
+            height: 40vh;
+            margin: 40px 20px;
+        }
+
+        #ca-section {
+            cursor: pointer;
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gradient);
+            border-radius: 50px;
+            font-size: 1.2em;
+            color: var(--black);
+            font-weight: 700;
+            transition: transform var(--transition-time), box-shadow var(--transition-time);
+            box-shadow: 0 0 20px var(--gold);
+            word-break: break-all;
+        }
+
+        #ca-section:hover,
+        #ca-section:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--blue);
+        }
+
+        #copy-message {
+            display: none;
+            color: var(--gold);
+            margin-top: 15px;
+            font-size: 1.1em;
+            text-shadow: 0 0 5px var(--blue);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .how-to {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .how-to li {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .how-to li::before {
+            content: '\f058';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .token-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.5));
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            transition: transform var(--transition-time);
+        }
+
+        .token-item:hover,
+        .token-item:focus-within {
+            transform: scale(1.05);
+        }
+
+        .token-item h3 {
+            color: var(--blue);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #000000;
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid var(--blue);
+            z-index: 10;
+            position: relative;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: var(--blue);
+            font-size: 2.5em;
+            transition: color var(--transition-time), transform var(--transition-time);
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 15px;
+            }
+
+            .hero-content {
+                padding: 60px 15px;
+            }
+
+            .narrative p {
+                font-size: 1.2em;
+            }
+
+            .how-to li {
+                font-size: 1.1em;
+                padding-left: 35px;
+            }
+
+            .how-to li::before {
+                font-size: 1.3em;
+                left: 2px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .tokenomics-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            footer {
+                padding: 40px 15px;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-links a {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                padding: 12px 40px;
+                font-size: 1em;
+            }
+
+            .hero-logo {
+                width: 120px;
+            }
+
+            #ca-section,
+            .hero-ca {
+                word-break: break-word;
+                hyphens: auto;
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            #contract {
+                padding: 40px 20px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.5em;
+            }
+
+            .feature-card p {
+                font-size: 1em;
+            }
+
+            .token-item {
+                padding: 25px 20px;
+            }
+
+            .token-item h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets/banner.png" alt="$GEMONEY Banner Image" class="hero-banner">
+        <div class="hero-content">
+            <img src="assets/logo.png" alt="$GEMONEY Logo" class="hero-logo">
+            <h1>$GEMONEY</h1>
+            <p>GEM + MONEY = $GEMONEY</p>
+            <button class="cta-button">BUY</button>
+            <div class="hero-socials">
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+            <div class="hero-ca" onclick="copyCAHero()" role="button" tabindex="0" aria-label="Copy Contract Address">CA: soon</div>
+            <div id="hero-copy-message">Copied to Clipboard! ✨</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="narrative" aria-labelledby="narrative-title">
+            <h2 id="narrative-title">Why $GEMONEY?</h2>
+            <div class="narrative">
+                <p>$GEMONEY is a token on Solana that blends the concepts of GEM and MONEY.</p>
+                <p>Why choose $GEMONEY on Meteora? It's straightforward: we deliver both Gem and Money.</p>
+                <p>Gem symbolizes a precious asset that grows in value over time, perfect for long-term holding.</p>
+                <p>Money represents the earnings that holders and investors gain by providing liquidity on Meteora, enabling them to claim fees.</p>
+            </div>
+        </section>
+
+        <section id="features" aria-labelledby="features-title">
+            <h2 id="features-title">Core Features</h2>
+            <div class="features">
+                <div class="feature-card" tabindex="0">
+                    <i class="fas fa-rocket feature-icon" aria-hidden="true"></i>
+                    <h3>Win with Pump</h3>
+                    <p>Fuel the hype with dynamic community pumps that skyrocket your portfolio.</p>
+                </div>
+                <div class="feature-card" tabindex="0">
+                    <i class="fas fa-lock feature-icon" aria-hidden="true"></i>
+                    <h3>Win with LP</h3>
+                    <p>Lock in liquidity and harvest passive rewards.</p>
+                </div>
+                <div class="feature-card" tabindex="0">
+                    <i class="fas fa-money-bill-wave feature-icon" aria-hidden="true"></i>
+                    <h3>Claim Fees</h3>
+                    <p>Effortlessly claim transaction fees and boost your earnings.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tokenomics" aria-labelledby="tokenomics-title">
+            <h2 id="tokenomics-title">Tokenomics</h2>
+            <div class="tokenomics-grid">
+                <div class="token-item" tabindex="0">
+                    <h3>Total Supply</h3>
+                    <p>1,000,000,000 $GEMONEY</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contract" aria-labelledby="contract-title">
+            <h2 id="contract-title">Contract Address</h2>
+            <div id="ca-section" onclick="copyCA()" role="button" tabindex="0" aria-label="Copy Contract Address">CA: soon</div>
+            <div id="copy-message">Copied to Clipboard! ✨</div>
+        </section>
+
+        <section id="how-to-join" aria-labelledby="how-to-join-title">
+            <h2 id="how-to-join-title">How to Get Started</h2>
+            <ul class="how-to">
+                <li>Connect your favorite Solana wallet (Phantom, Solflare, etc.).</li>
+                <li>Head to a Solana DEX like Meteora or Jupiter.</li>
+                <li>Paste the $GEMONEY CA and swap for tokens.</li>
+                <li>Follow our X for updates and pumps!</li>
+            </ul>
+            <button class="cta-button" style="display: block; margin: 50px auto 0;">Buy $GEMONEY Now</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 $GEMONEY. All Rights Reserved. DYOR - Invest Wisely! 💎</p>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(text, messageElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                messageElement.style.display = 'block';
+                setTimeout(() => { messageElement.style.display = 'none'; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function copyCA() {
+            const caText = document.getElementById('ca-section').innerText.replace('CA: ', '').trim();
+            const message = document.getElementById('copy-message');
+            copyToClipboard(caText, message);
+        }
+
+        function copyCAHero() {
+            const caText = document.querySelector('.hero-ca').innerText.replace('CA: ', '').trim();
+            const message = document.getElementById('hero-copy-message');
+            copyToClipboard(caText, message);
+        }
+
+        // Add keyboard support for accessibility
+        document.querySelectorAll('[role="button"]').forEach(button => {
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
