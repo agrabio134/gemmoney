@@ -267,11 +267,74 @@
             margin: 0 auto;
         }
 
-        .narrative p {
-            font-size: 1.4em;
+        .narrative-intro {
+            font-size: 1.5em;
             font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #FFFFFF;
+            line-height: 1.4;
+        }
+
+        .narrative-question {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--blue);
+            margin: 50px 0 30px;
+            text-align: center;
+            text-shadow: 0 0 5px var(--shadow);
+        }
+
+        .narrative-answer {
+            font-size: 1.4em;
+            font-weight: 400;
             margin-bottom: 30px;
             text-align: center;
+            color: #FFFFFF;
+            line-height: 1.5;
+        }
+
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .explanation-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.5));
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            transition: transform var(--transition-time), box-shadow var(--transition-time);
+        }
+
+        .explanation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--gold);
+        }
+
+        .explanation-icon {
+            font-size: 3em;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--blue);
+        }
+
+        .explanation-term {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .explanation-desc {
+            font-size: 1.1em;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 1.5;
         }
 
         .features {
@@ -474,8 +537,26 @@
                 font-size: 2em;
             }
 
-            .narrative p {
+            .narrative-intro {
+                font-size: 1.3em;
+            }
+
+            .narrative-question {
+                font-size: 1.4em;
+                margin: 40px 0 25px;
+            }
+
+            .narrative-answer {
                 font-size: 1.2em;
+            }
+
+            .explanation-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .explanation-item {
+                padding: 25px;
             }
 
             .how-to li {
@@ -560,6 +641,22 @@
             .hero-content p {
                 letter-spacing: 0.5px;
             }
+
+            .narrative-intro {
+                font-size: 1.2em;
+            }
+
+            .narrative-question {
+                font-size: 1.3em;
+            }
+
+            .narrative-answer {
+                font-size: 1.1em;
+            }
+
+            .explanation-term {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -590,10 +687,21 @@
         <section id="narrative" aria-labelledby="narrative-title">
             <h2 id="narrative-title">Why $GEMONEY?</h2>
             <div class="narrative">
-                <p>$GEMONEY is a token on Solana that blends the concepts of GEM and MONEY.</p>
-                <p>Why choose $GEMONEY on Meteora? It's straightforward: we deliver both Gem and Money.</p>
-                <p>Gem symbolizes a precious asset that grows in value over time, perfect for long-term holding.</p>
-                <p>Money represents the earnings that holders and investors gain by providing liquidity on Meteora, enabling them to claim fees.</p>
+                <p class="narrative-intro">$GEMONEY is a token on Solana that blends the concepts of GEM and MONEY.</p>
+                <div class="narrative-question">Why choose $GEMONEY on Meteora?</div>
+                <p class="narrative-answer">It's straightforward: we deliver both Gem and Money.</p>
+                <div class="explanation-grid">
+                    <div class="explanation-item">
+                        <i class="fas fa-gem explanation-icon" aria-hidden="true"></i>
+                        <div class="explanation-term">Gem</div>
+                        <p class="explanation-desc">symbolizes a precious asset that grows in value over time, perfect for long-term holding.</p>
+                    </div>
+                    <div class="explanation-item">
+                        <i class="fas fa-dollar-sign explanation-icon" aria-hidden="true"></i>
+                        <div class="explanation-term">Money</div>
+                        <p class="explanation-desc">represents the earnings that holders and investors gain by providing liquidity on Meteora, enabling them to claim fees.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
